@@ -1,11 +1,8 @@
 package weatherservice.weatherservicebackend.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
-
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,15 +10,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class WeatherData {
-    private String city;
-    private Integer windSpeed;
-    private Integer maxTemp;
-    private Integer minTemp;
-    private Integer feelsLikeTemp;
-    private Integer windDirection;
-    private LocalDateTime sunriseTime;
-    private LocalDateTime sunsetTime;
-    private LocalDateTime currentTime;
+
+    private String name;
+    private Double windSpeed;
+    private Double windDirection;
+    private Double currentTemp;
+    private Double feelsLikeTemp;
+    private Double maxTemp;
+    private Double minTemp;
+    private Integer pressure;
+    private Integer humidity;
+    private Integer visibility;
     
 }

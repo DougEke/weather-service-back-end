@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import weatherservice.weatherservicebackend.entity.WeatherData;
 
 @Repository
-public interface WeatherRepository extends JpaRepository<WeatherData, Integer> {
+public interface WeatherDataRepository extends JpaRepository<WeatherData, Integer> {
     
 }
