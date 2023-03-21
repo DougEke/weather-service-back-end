@@ -28,7 +28,7 @@ public class WeatherDataMapperTest {
 
         var weatherData = underTest.jsonToWeatherDataMapper( new JSONObject(getJsonFile()));
         
-        assertEquals("Harlow", weatherData.getName());
+        assertEquals("Harlow", weatherData.getPlaceName());
         assertEquals("3.09", weatherData.getWindSpeed().toString());
         assertEquals("150.0", weatherData.getWindDirection().toString());
         assertEquals("6.0", weatherData.getCurrentTemp().toString());

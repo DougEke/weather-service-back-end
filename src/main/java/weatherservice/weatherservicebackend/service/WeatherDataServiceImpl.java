@@ -5,13 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import weatherservice.weatherservicebackend.entity.WeatherData;
 import weatherservice.weatherservicebackend.interfaces.WeatherDataService;
+import weatherservice.weatherservicebackend.repository.WeatherDataRepository;
 import weatherservice.weatherservicebackend.weather_service_exceptions.WeatherServiceException;
 
 @Service
-public class WeatherDataServiceImpl implements WeatherDataService {    
+public class WeatherDataServiceImpl implements WeatherDataService {   
+    
+    @Autowired
+    private WeatherDataRepository weatherDataRepository;
 
     /**
      * Gets the current weather from the apiweather location.
@@ -53,5 +60,10 @@ public class WeatherDataServiceImpl implements WeatherDataService {
         catch(IOException ex){
             throw new WeatherServiceException("Error collecting the data", ex);
         }        
+    }
+
+    @Override
+    public List<WeatherData> findWeatherDataByPlaceName(String placeName) {
+       return weatherDataRepository.findByPlaceName(placeName);
     }
 }

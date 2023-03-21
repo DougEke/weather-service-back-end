@@ -31,7 +31,9 @@ public class WeatherServiceController {
     @GetMapping("/weather/{city}")
     public WeatherData getCurrentWeatherData(@PathVariable("city") String city) {     
         
-        var data = weatherDataMapper.jsonToWeatherDataMapper(new JSONObject(weatherDataService.getCurrentWeatherFromOpenWeatherApi(city)));
+        var data = weatherDataMapper.jsonToWeatherDataMapper(
+            new JSONObject(weatherDataService.getCurrentWeatherFromOpenWeatherApi(city))
+            );
 
         weatherDataRepository.save(data);
 

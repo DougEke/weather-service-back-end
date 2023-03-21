@@ -1,6 +1,7 @@
 package weatherservice.weatherservicebackend.mapper;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
@@ -12,9 +13,13 @@ public class WeatherDataMapper {
     public WeatherData jsonToWeatherDataMapper(JSONObject obj) {
         var data = new WeatherData();
 
-        // Gets the name
-        data.setName(obj.get("name").toString());
-        System.out.println("Name: " + data.getName());
+        // Gets the name and recording time
+        data.setPlaceName(obj.get("name").toString());
+        System.out.println("Name: " + data.getPlaceName());
+
+        data.setWeatherRecordedAtDateTime(LocalDateTime.now());
+
+        data.setWeatherRecordedAtDateTime(null);
 
         // Get the wind data
         data.setWindSpeed(Double.parseDouble(((JSONObject)obj.get("wind")).get("speed").toString()));
